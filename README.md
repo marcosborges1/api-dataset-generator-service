@@ -8,10 +8,6 @@ The essence of ADG's functionality is rooted in the [Algorithm section](#Algorit
 
 <img src="/images/general_information_api_integration_points.png" height="300"/>
 
-## Implementation Details
-
-The core of ADG is defined by the intricate Algorithm \ref{alg:dataset}. This algorithm, designed to seamlessly integrate with the data provided by the API Syntactic Extractor, facilitates the creation of a robust and comprehensive dataset vital for similarity analysis tasks.
-
 ## Algorithm
 
 The ADG's core is based on the algorithm described below.
