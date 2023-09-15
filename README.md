@@ -4,7 +4,9 @@
 
 The API Dataset Generator (ADG) is a dedicated component within the Agape approach, tasked with the generation of datasets that encompass all 12 general information data required for similarity analyses. This dataset is crafted using a Cartesian Product, which juxtaposes all response attributes present in each endpoint of an API with every input attribute in all other APIs. The primary intention is to create a comprehensive dataset facilitating in-depth similarity analyses.
 
-The essence of ADG's functionality is rooted in the [Algorithm section](#Algorithm). This algorithm harnesses the information extracted from the APIs by the [API Syntactic Extractor (ASE)](https://github.com/marcosborges1/api-syntactic-extractor-service). It then returns a dataset formulated through the Cartesian Product of the 12 general information data points.
+The essence of ADG's functionality is rooted in the [Algorithm section](#Algorithm). This algorithm harnesses the information extracted from the APIs by the [API Syntactic Extractor (ASE)](https://github.com/marcosborges1/api-syntactic-extractor-service). It then returns a dataset formulated through the Cartesian Product of the 12 general information of API integration points, see Figure below.
+
+<img src="/images/general_information_api_integration_points.png" height="300"/>
 
 ## Implementation Details
 
