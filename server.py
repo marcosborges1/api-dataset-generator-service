@@ -1,4 +1,6 @@
 # server.py
+import os
+from dotenv import load_dotenv
 import uvicorn
 from ariadne import QueryType, make_executable_schema
 from ariadne.asgi import GraphQL
@@ -8,6 +10,8 @@ from starlette.staticfiles import StaticFiles
 from my_graphql.schemas.index import type_defs
 from my_graphql.resolvers.index import resolve_generate_dataset
 
+# Load dotenv
+load_dotenv()
 # Ariadne setup
 query = QueryType()
 query.set_field("generateDataset", resolve_generate_dataset)
@@ -24,4 +28,4 @@ routes = [
 app = Starlette(routes=routes)
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=4002)
+    uvicorn.run(app, host="localhost", port=os.getenv('PORT'))
