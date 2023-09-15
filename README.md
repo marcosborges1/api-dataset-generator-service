@@ -59,4 +59,4 @@ Community-driven improvements are always welcome. If you're looking to contribut
 
 ## License
 
-[Your License Information Here, e.g., MIT]
+[MIT](https://choosealicense.com/licenses/mit/)
