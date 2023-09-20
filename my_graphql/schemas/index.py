@@ -1,10 +1,10 @@
 type_defs = """
         type Query {
-        generateDataset(input_file_path: String!): DatasetOutput!
+                generateDataset(generatedExtractedFile: String!): DatasetOutput!
         }
 
-        type DatasetOutput {
-        fileGenerated: String!
-        information: String!
+        type DatasetOutput @key(fields: "generatedDatasetFile") {
+                generatedDatasetFile: String!
+                information: String!
         }
 """

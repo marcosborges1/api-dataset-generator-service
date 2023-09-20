@@ -1,9 +1,18 @@
 from core import general_analyser, utils
 from collections import defaultdict
+from urllib.parse import urlparse
+import os
 
+BASE_URL = f"http://localhost:{os.getenv('PORT')}"
 
-def resolve_generate_dataset(_, info, input_file_path):
-    file_content = utils.open_file(input_file_path)
+async def resolve_generate_dataset(_, info, generatedExtractedFile):
+
+    # print(generatedExtractedFile)
+    # return {"generatedDatasetFile": "adf", "information": "adsf"}
+
+    parsed_url = urlparse(generatedExtractedFile)
+    filename = parsed_url.path.split('/')[-1]
+    file_content = await utils.open_file(generatedExtractedFile)
     cartesian_products = defaultdict(list)
 
     # Get numbers of API endpoints before Analysis
@@ -27,10 +36,11 @@ def resolve_generate_dataset(_, info, input_file_path):
     general_analyser.analyse_apis(
         new_clean_file_content, cartesian_products, order_by="DESC"
     )
-    output_file_path = "data/path_to_output.csv"
+    csv_filename = filename.replace('.json', '.csv')
+    output_file_path = f"data/{csv_filename}"
     # Save results from Analyse of APIS in file
     general_analyser.save_cartesian_products(
         cartesian_products, output_file_path, "csv"
     )
     information = f"Dataset generated saved to {output_file_path}"
-    return {"fileGenerated": output_file_path, "information": information}
+    return {"generatedDatasetFile": f"{BASE_URL}/{output_file_path}", "information": information}

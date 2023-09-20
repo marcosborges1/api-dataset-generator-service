@@ -314,7 +314,7 @@ def save_table(header, body, path):
     # print(df["gini"])
     # print(df[["hamming","levenshtein"]].astype(num))
     with open(path, "w") as csv_file:
-        df.to_csv(path_or_buf=csv_file)
+        df.to_csv(path_or_buf=csv_file,index_label="index")
 
 
 # def _show_line_chart(header, body):
@@ -459,10 +459,11 @@ def save_csv(cartesian_products, path):
     array_data = []
     headers_data = []
     # table = Table(title="Syntactic Analysis")
-    fixed_columns = ["Origin API (OA)", "Target API (TA)", "OA Out Attr", "TA In Attr"]
-    data_types = ["OA Out Attr dt", "TA In Attr dt"]
-    parents = ["OA Out Attr parent", "TA In Attr parent"]
-    data_endpoints = ["OA Url", "OA Method", "TA Url", "TA Method"]
+    # index_column = ["index"]
+    fixed_columns = ["origin_api", "target_api", "oa_out_attr", "ta_in_attr"]
+    data_types = ["oa_out_attr_dt", "ta_in_attr_dt"]
+    parents = ["oa_out_attr_parent", "ta_in_attr_parent"]
+    data_endpoints = ["oa_url", "oa_method", "ta_url", "ta_method"]
     metric_columns = [
         "hamming",
         "levenshtein",

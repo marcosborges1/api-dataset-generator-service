@@ -9,13 +9,16 @@ from starlette.routing import Route, Mount
 from starlette.staticfiles import StaticFiles
 from my_graphql.schemas.index import type_defs
 from my_graphql.resolvers.index import resolve_generate_dataset
+from ariadne.contrib.federation import make_federated_schema
 
 # Load dotenv
+
 load_dotenv()
+
 # Ariadne setup
 query = QueryType()
 query.set_field("generateDataset", resolve_generate_dataset)
-schema = make_executable_schema(type_defs, query)
+schema = make_federated_schema(type_defs, query)
 graphql_app = GraphQL(schema, debug=True)
 
 # Define the routes for the app
@@ -28,4 +31,5 @@ routes = [
 app = Starlette(routes=routes)
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=os.getenv('PORT'))
+    # uvicorn.run(app, host="localhost", port=os.getenv('PORT'))
+    uvicorn.run("server:app", host="localhost", port=int(os.getenv('PORT')), reload=True)
