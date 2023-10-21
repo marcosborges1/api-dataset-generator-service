@@ -65,4 +65,4 @@ Community-driven improvements are always welcome. If you're looking to contribut
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.
